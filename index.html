@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="phaser.min.js"></script>
+</head>
+<body>
+
+    <script>
+    
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var game = new Phaser.Game(config);
+function preload() {
+    this.load.image('girl', './png/idle/1.png');
+    this.load.image('girl2', './png/idle/2.png');
+    this.load.image('girl3', './png/idle/3.png');
+    this.load.image('girl4', './png/idle/4.png');
+    this.load.image('girl5', './png/idle/5.png');
+    this.load.image('girl6', './png/idle/6.png');
+    this.load.image('girl7', './png/idle/7.png');
+    this.load.image('girl8', './png/idle/8.png');
+    this.load.image('girl9', './png/idle/9.png');
+    this.load.image('girl10', './png/idle/10.png');
+    this.load.image('girl11', './png/idle/11.png');
+    this.load.image('girl12', './png/idle/12.png');
+    this.load.image('girl13', './png/idle/13.png');
+    this.load.image('girl14', './png/idle/14.png');
+    this.load.image('girl15', './png/idle/15.png');
+    this.load.image('girl16', './png/idle/16.png');
+}
+
+var s;
+
+function create() {
+    
+    //s = this.add.sprite(200, 200, 'girl');
+    player = this.physics.add.sprite(100, 450, 'girl');
+    this.anims.create({
+        key: 'idle',
+        frames: [
+            { key: 'girl' },
+            { key: 'girl2' },
+            { key: 'girl3' },
+            { key: 'girl4' },
+            { key: 'girl5' },
+            { key: 'girl6' },
+            { key: 'girl7' },
+            { key: 'girl8' },
+            { key: 'girl9' },
+            { key: 'girl10' },
+            { key: 'girl11' },
+            { key: 'girl12' },
+            { key: 'girl13' },
+            { key: 'girl14' },
+            { key: 'girl15' },
+            { key: 'girl16' }
+        ],
+        frameRate: 17,
+        repeat: -1
+    });// 157 x 171
+    player.play('idle')
+    player.setBounce(0.2);
+    player.setCollideWorldBounds(true);
+    player.body.setGravityY(300)
+}
+
+function update() {
+var cursors = this.input.keyboard.createCursorKeys();
+if (cursors.left.isDown)
+{
+    player.setVelocityX(-160);
+
+  //  player.anims.play('left', true);
+}
+else if (cursors.right.isDown)
+{
+    player.setVelocityX(160);
+//    player.anims.play('right', true);
+}
+else
+{
+    player.setVelocityX(0);
+
+    //player.anims.play('turn');
+}
+
+if (cursors.up.isDown)
+{   console.log("up")
+   player.setVelocityY(-370);
+   player.setFrame(9)
+}
+
+}
+
+function render() {
+    game.debug.spriteInfo(s, 20, 32);
+
+}
+    </script>
+
+</body>
+</html>
+    </script>
+
+</body>
+</html>
+
